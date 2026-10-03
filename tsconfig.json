@@ -1,5 +1,5 @@
 {
-    "compillerOptions" : {
+    "compilerOptions" : {
         "target" : "esnext",
         "module" : "nodenext",
         "moduleResolution" : "nodenext",
@@ -7,7 +7,6 @@
         "erasableSyntaxOnly" : true,
         "allowImportingTsExtensions" : true,
         "noEmit" : true,
-        "types" : ["node"],
-        
+        "types": ["node"]
     }
 }
