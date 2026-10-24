@@ -1,5 +1,12 @@
-{"name": "acme",
-    "version": "0.0.0",
-    "description": "Sistema de gestão de contas a receber.",
-    "author": "Gustavo Teixeira"
+{
+"name":"acme",
+"version":"0.0.0",
+"description":"Sistema de gestão de contas a receber.",
+"author":"Gustavo Teixeira",
+"scripts": {
+    "check": "biome check ./",
+    "fix": "biome check --write ./",
+    "fix:unsafe": "biome check --write --unsafe ./" 
+},
+"devDependencies":{"@biomejs/biome":"2.6.2"}
 }
