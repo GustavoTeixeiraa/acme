@@ -24,14 +24,14 @@ interface Invoice {
 
 const invoices: Invoice[] = [{
   id: 1,
-  amount: 125000,
+  amount: 125037,
   status: 'pending',
   issueDate: '03-10-2026',
-  dueDate: '05-11-2026',
+  dueDate: '2026-10-20',
   customer: {
     id: 7,
     name: 'Construtora Meridiano',
-    email: 'contato@meridiano.com'
+    email: 'comercial@meridiano.com'
   }
 }, {
   id: 2,
@@ -41,16 +41,44 @@ const invoices: Invoice[] = [{
   dueDate: '05-11-2026',
   customer: {
     id: 7,
-    name: 'Construtora Meridiano',
-    email: 'contato@meridiano.com'
+    name: 'Gráfica Nova',
+    email: 'gráfica@meridiano.com'
   }
-}];
+}
+,
+{
+id: 3,
+  amount: 35000,
+  status: 'paid',
+  issueDate: '03-10-2026',
+  dueDate: '05-11-2026',
+  customer: {
+    id: 7,
+    name: 'TendiTudo',
+    email: 'tenditudo@gmail.com'
+  }
+}
+];
 
 app.get('/api/health',(request, response) => {
   response.status(200).json({status: 'ok'})
 });
+
 app.get('/api/invoices',(request, response) => {
   response.status(200).json({invoices})
+});
+
+app.get('/api/invoices/:id',(request, response) => {
+  const id = +request.params.id;
+
+  const Invoice = invoices.find( (invoice) => invoice.id === id);
+
+  if (!Invoice) response.status(404).json({error: {
+    status: 404,
+    message: 'Fatura não encontrada.'
+  }})
+
+  response.status(200).json(Invoice)
 });
 
 app.use((request, response) => {
